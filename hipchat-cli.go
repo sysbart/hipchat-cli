@@ -59,7 +59,7 @@ func main() {
 
 	if *token == "" || *roomID == "" || *msg == "test" {
 		flag.PrintDefaults()
-		return
+		os.Exit(1)
 	}
 
 	notificationRequest := notificationRequest{Color: *color, Message: *msg, Notify: true}
@@ -70,7 +70,7 @@ func main() {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "The message was not sent properly : %q\n", err)
 		fmt.Fprintf(os.Stderr, "Server returns %+v\n", resp)
-		return
+		os.Exit(1)
 	}
 
 }
