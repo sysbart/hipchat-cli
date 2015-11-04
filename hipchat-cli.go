@@ -40,11 +40,12 @@ func sendMessage(r string, n interface{}, t string) (*http.Response, error) {
 	if err != nil {
 		panic(err)
 	}
+	defer resp.Body.Close()
+
 	if c := resp.StatusCode; c < 200 || c > 299 {
 		return resp, fmt.Errorf("Server returns status %d", c)
 	}
 
-	defer resp.Body.Close()
 	return resp, err
 }
 
