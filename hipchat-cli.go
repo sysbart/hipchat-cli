@@ -52,12 +52,12 @@ func sendMessage(r string, n interface{}, t string) (*http.Response, error) {
 func main() {
 	token := flag.String("token", "", "Hipchat Token")
 	roomID := flag.String("roomID", "", "RoomID of the Hipchat room")
-	msg := flag.String("msg", "test", "Message you want to send")
+	msg := flag.String("msg", "", "Message you want to send")
 	color := flag.String("color", "yellow", "Color of the message")
 
 	flag.Parse()
 
-	if *token == "" || *roomID == "" || *msg == "test" {
+	if *token == "" || *roomID == "" || *msg == "" {
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
